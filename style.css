@@ -1,0 +1,210 @@
+/* Variables y Reset General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fondo decorativo con brillo sutil corporativo */
+.bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Contenedor de la Portada */
+.landing-container {
+    width: 100%;
+    max-width: 550px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.landing-card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 45px 35px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.landing-card:hover {
+    border-color: #0284c7;
+}
+
+/* Sección de Logo con Fondo Blanco */
+.brand-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    background-color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.corporate-logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Sección de Bienvenida */
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.badge-system {
+    background-color: rgba(2, 132, 199, 0.1);
+    color: #38bdf8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.welcome-section h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.welcome-section p {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    max-width: 420px;
+}
+
+/* Botón de Entrar */
+.action-section {
+    margin-top: 5px;
+}
+
+.btn-enter {
+    width: 100%;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-enter:hover {
+    background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    box-shadow: 0 6px 16px rgba(2, 132, 199, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-enter:active {
+    transform: translateY(0);
+}
+
+.btn-enter i {
+    transition: transform 0.2s ease;
+}
+
+.btn-enter:hover i {
+    transform: translateX(4px);
+}
+
+/* Pie de página de la tarjeta */
+.landing-footer {
+    border-top: 1px solid #334155;
+    padding-top: 15px;
+}
+
+.landing-footer p {
+    font-size: 0.75rem;
+    color: #64748b;
+    letter-spacing: 0.3px;
+}
+
+/* Pantalla de Carga (Overlay) */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+    gap: 15px;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.loading-overlay p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.spinner {
+    font-size: 2.5rem;
+    color: #0284c7;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}

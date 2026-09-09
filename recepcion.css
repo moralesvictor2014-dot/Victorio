@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Tarjetas y Contenedores */
+.card {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 0.75rem;
+    color: #f8fafc;
+}
+
+.card-header {
+    background-color: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+    color: #ffffff !important;
+}
+
+.card-body {
+    background-color: #0f172a !important;
+    color: #f8fafc;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+}
+
+/* Inputs generales */
+.form-control, .form-select {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 0.25rem rgba(2, 132, 199, 0.25) !important;
+    color: #ffffff !important;
+}
+
+.form-control::placeholder {
+    color: #64748b !important;
+}
+
+/* Tabla Estilo Hoja de Cálculo */
+.spreadsheet-container {
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #334155;
+    background-color: #1e293b;
+}
+
+.table {
+    color: #f8fafc !important;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+.table th, .table td {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #0f172a !important;
+    color: #38bdf8 !important;
+    border-bottom: 2px solid #334155 !important;
+}
+
+/* Inputs compactos dentro de la tabla */
+.table input[type="text"],
+.table select {
+    font-size: 0.82rem;
+    padding: 0.2rem 0.4rem;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: #f8fafc;
+    width: 100%;
+    min-width: 80px;
+}
+
+.table input[type="text"]:focus,
+.table select:focus {
+    border-color: #0284c7;
+    background-color: #0f172a;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.15rem rgba(2, 132, 199, 0.25);
+}
+
+.col-serial { min-width: 110px; }
+.col-marca { min-width: 100px; }
+.col-tipo { min-width: 75px; }
+.col-small-select { min-width: 75px; }
+.col-obs { min-width: 180px; }
+
+/* Búsqueda y Alertas */
+.list-group-item {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+.list-group-item:hover {
+    background-color: #1e293b !important;
+    color: #38bdf8 !important;
+}
+
+.alert-info {
+    background-color: #1e293b !important;
+    border: 1px solid #0284c7 !important;
+    color: #38bdf8 !important;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: #0284c7 !important;
+    border-color: #0284c7 !important;
+}
+
+.btn-primary:hover {
+    background-color: #0369a1 !important;
+    border-color: #0369a1 !important;
+}
+
+.btn-warning {
+    background-color: #d97706 !important;
+    border-color: #d97706 !important;
+    color: #ffffff !important;
+}
+
+.btn-warning:hover {
+    background-color: #b45309 !important;
+    border-color: #b45309 !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-light {
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.btn-outline-light:hover {
+    background-color: #334155;
+    color: #ffffff;
+}
+
+.btn-outline-secondary {
+    border-color: #475569;
+    color: #94a3b8;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #475569;
+    color: #ffffff;
+}

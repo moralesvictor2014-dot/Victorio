@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <link rel="icon" type="image/png" href="icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+    <!-- Pantalla de Carga -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <i class="fa-solid fa-circle-notch spinner"></i>
+        <p style="color: #94a3b8; font-size: 0.9rem;">Cargando sistema...</p>
+    </div>
+
+    <!-- Barra de Navegación superior -->
+    <header class="navbar">
+        <div class="navbar-brand">
+            <img src="icono.png" alt="Logo" class="navbar-logo" onerror="this.style.display='none'">
+            <div class="navbar-title">
+                <h1>Departamento de Operaciones</h1>
+            </div>
+        </div>
+        <div class="user-info">
+            <button class="btn-logout" id="btnLogout">
+                <i class="fa-solid fa-right-from-bracket"></i> Salir
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        <section class="dashboard-header">
+            <h2>Panel de Control</h2>
+            <p>Selecciona un módulo para acceder a sus funciones operativas.</p>
+        </section>
+
+        <div class="modules-grid">
+            <!-- Módulo 1 -->
+            <a href="comerciales.html" class="module-card">
+                <div>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <div class="module-title">Entrada y Control</div>
+                    <div class="module-description">Gestión de registro de cliente y generador de numero de recepción</div>
+                </div>
+                <div class="module-action">
+                    Acceder <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Módulo 2 -->
+            <a href="recepcion.html" class="module-card">
+                <div>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div class="module-title">Recepción </div>
+                    <div class="module-description">Registro de entra de equipos de extensión portátiles y sobre rueda</div>
+                </div>
+                <div class="module-action">
+                    Acceder <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Módulo 3 -->
+            <a href="ruta.html" class="module-card">
+                <div>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="module-title">Ruta de Equipos</div>
+                    <div class="module-description">Registro de progresos de hoja de ruta de equipos de extensión</div>
+                </div>
+                <div class="module-action">
+                    Acceder <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Módulo 4 -->
+            <a href="configuracion.html" class="module-card">
+                <div>
+                    <div class="module-icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div class="module-title">Modulo-Update</div>
+                    <div class="module-description">Esto es un ejemplo de lo que hace este modulo</div>
+                </div>
+                <div class="module-action">
+                    Acceder <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <script src="menu.js"></script>
+</body>
+</html>

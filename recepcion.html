@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones-Extinción</title>
+    <link rel="icon" type="image/png" href="icono.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="recepcion.css">
+</head>
+<body>
+
+    <div class="container-fluid py-4">
+        
+        <div class="mb-3">
+            <a href="menu.html" class="btn btn-outline-light shadow-sm fw-bold">
+                <i class="fa-solid fa-house me-2"></i> Volver al Menú
+            </a>
+        </div>
+
+        <div class="card shadow-sm mb-4 border-secondary">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-2">
+                <span class="fw-semibold text-info"><i class="fa-solid fa-magnifying-glass me-2"></i> Historial Recepciones / Seleccionar</span>
+                <button class="btn btn-sm btn-outline-info text-light fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#searchCollapse">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="collapse show" id="searchCollapse">
+                <div class="card-body">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-5">
+                            <label for="searchQuery" class="form-label fw-semibold small">Filtrar por Cliente o N° de Recepción (Opcional):</label>
+                            <input type="text" id="searchQuery" class="form-control" placeholder="Dejar vació para ver todos o escribir filtro...">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" id="btnBuscar" class="btn btn-primary w-100">
+                                <i class="fa-solid fa-list me-1"></i> Mostrar Listado Completo
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" id="btnNuevo" class="btn btn-outline-secondary w-100">
+                                <i class="fa-solid fa-file-circle-plus me-1"></i> Limpiar / Nueva Recepción
+                            </button>
+                        </div>
+                    </div>
+                    <div id="searchResultsContainer" class="mt-3" style="display: none;">
+                        <hr class="border-secondary">
+                        <h6 class="text-info small fw-bold mb-2"><i class="fa-solid fa-hand-pointer me-1"></i> Haz clic en el registro que deseas cargar para realizar o editar la recepción:</h6>
+                        <div class="list-group shadow-sm" id="searchResultsList" style="max-height: 250px; overflow-y: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4 border-0">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
+                <div>
+                    <h3 class="mb-0 fw-bold text-light"><i class="fa-solid fa-fire-extinguisher me-2 text-danger"></i> Recepción de Equipos de Extinción</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="inputFecha" class="form-label fw-semibold">Fecha:</label>
+                        <input type="date" id="inputFecha" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputCliente" class="form-label fw-semibold">Cliente:</label>
+                        <input type="text" id="inputCliente" class="form-control" placeholder="Ingrese nombre del cliente">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputNumero" class="form-label fw-semibold">N° de Recepción:</label>
+                        <input type="text" id="inputNumero" class="form-control" placeholder="Ej: RO-20260604-001">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4 border-0">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <span class="fw-semibold"><i class="fa-solid fa-table me-2"></i> Registro de Equipos</span>
+                <div>
+                    <button type="button" id="btnAddRow" class="btn btn-sm btn-outline-light me-2">
+                        <i class="fa-solid fa-plus me-1"></i> Añadir Fila
+                    </button>
+                    <span class="badge bg-secondary">Total ítems: <span id="rowCount">15</span></span>
+                </div>
+            </div>
+            
+            <div class="card-body p-0">
+                <div class="table-responsive spreadsheet-container">
+                    <table class="table table-bordered table-hover mb-0 align-middle text-center" id="tablaRecepcion">
+                        <thead class="text-uppercase small">
+                            <tr>
+                                <th class="align-middle">Item</th>
+                                <th class="align-middle">Serial</th>
+                                <th class="align-middle">Marca</th>
+                                <th class="align-middle">Tipo</th>
+                                <th class="align-middle">CO2</th>
+                                <th class="align-middle">PQS</th>
+                                <th class="align-middle">ESP</th>
+                                <th class="align-middle">H2O</th>
+                                <th class="align-middle">Otro</th>
+                                <th class="align-middle">Capacidad</th>
+                                <th class="align-middle">Presión</th>
+                                <th class="align-middle">Mang. D.</th>
+                                <th class="align-middle">Mang. A.</th>
+                                <th class="align-middle">Mang. B.</th>
+                                <th class="align-middle">Cupilla R.</th>
+                                <th class="align-middle">Cilindro</th>
+                                <th class="align-middle">Manómetro</th>
+                                <th class="align-middle">Boquilla</th>
+                                <th class="align-middle">Válvula</th>
+                                <th class="align-middle">Pasadores</th>
+                                <th class="align-middle">Precinto</th>
+                                <th class="align-middle">F. Metalica</th>
+                                <th class="align-middle">F. Plastica</th>
+                                <th class="align-middle">G. Capsula</th>
+                                <th class="align-middle">Capsula CO2</th>
+                                <th class="align-middle">Pintura</th>
+                                <th class="align-middle">P.H Extingidor</th>
+                                <th class="align-middle">P.H Impulsor</th>
+                                <th class="align-middle" style="min-width: 150px;">Observaciones</th>
+                                <th class="align-middle">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info py-2 small mb-4 d-flex flex-wrap justify-content-between align-items-center shadow-sm">
+            <span><strong>Leyenda Tipo:</strong> P (Portátil), R (Sobre ruedas)</span>
+            <span><strong>Estados:</strong> OK (Conforme), NC (No Conforme), NF (No Funciona), RG (Regular), NT (No tiene), NA (No Aplica)</span>
+        </div>
+
+        <div class="d-flex justify-content-end gap-3 mb-5">
+            <button type="button" id="btnGuardar" class="btn btn-primary btn-lg px-4 shadow">
+                <i class="fa-solid fa-cloud-arrow-up me-2"></i> Guardar Nueva Recepción
+            </button>
+            <button type="button" id="btnGuardarCambios" class="btn btn-warning btn-lg px-4 shadow">
+                <i class="fa-solid fa-pen-to-square me-2"></i> Guardar Cambios
+            </button>
+            <button type="button" id="btnExportar" class="btn btn-success btn-lg px-4 shadow">
+                <i class="fa-solid fa-file-excel me-2"></i> Descargar Recepción
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="recepcion.js"></script>
+</body>
+</html>

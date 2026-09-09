@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada y Control</title>
+    <link rel="icon" type="image/png" href="icono.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="comerciales.css">
+</head>
+<body>
+
+    <div class="container-fluid py-4">
+        
+        <!-- Navegación Superior -->
+        <div class="mb-4 d-flex justify-content-between align-items-center">
+            <a href="menu.html" class="btn btn-outline-light shadow-sm fw-bold">
+                <i class="fa-solid fa-house me-2"></i> Volver al Menú
+            </a>
+            <h2 class="m-0 text-light fw-bold">
+                <i class="fa-solid fa-chart-line me-2 text-info"></i> Panel Entrada & Control de Progreso
+            </h2>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- COLUMNA IZQUIERDA: Formulario de Registro y Selector de Avance -->
+            <div class="col-lg-5">
+                
+                <!-- TARJETA 1: Modificar Progreso de Recepción Existente -->
+                <div class="card shadow border-info mb-4">
+                    <div class="card-header bg-dark text-info py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold"><i class="fa-solid fa-list-check me-2"></i> Actualizar Progreso de Recepción</h5>
+                        <button type="button" class="btn btn-sm btn-outline-info" id="btnRefrescarSelect" title="Actualizar lista">
+                            <i class="fa-solid fa-rotate me-1"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="selectRecepcion" class="form-label fw-semibold">Seleccionar N° de Recepción:</label>
+                            <select id="selectRecepcion" class="form-select border-info">
+                                <option value="">-- Cargando recepciones desde Firebase... --</option>
+                            </select>
+                        </div>
+
+                        <div id="panelActualizacion" style="display: none;">
+                            <div class="alert alert-dark border-secondary small py-2 mb-3">
+                                <div><strong>Cliente:</strong> <span id="infoCliente" class="text-info">-</span></div>
+                                <div><strong>Servicio:</strong> <span id="infoServicio" class="text-light">-</span></div>
+                                <div><strong>Fechas:</strong> <span id="infoFechas" class="text-muted">-</span></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="updateProgresoSlider" class="form-label fw-semibold d-flex justify-content-between">
+                                    <span>Porcentaje de Avance del Trabajo:</span>
+                                    <span id="updateProgresoValor" class="badge bg-primary fs-6">0%</span>
+                                </label>
+                                <input type="range" class="form-range custom-slider" id="updateProgresoSlider" min="0" max="100" step="5" value="0">
+                            </div>
+
+                            <button type="button" id="btnActualizarProgreso" class="btn btn-info w-100 fw-bold text-dark shadow-sm">
+                                <i class="fa-solid fa-arrow-up-from-line me-2"></i> Guardar Avance
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TARJETA 2: Registro de Nuevo Cliente / Servicio -->
+                <div class="card shadow border-0">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h5 class="mb-0 fw-bold"><i class="fa-solid fa-user-plus me-2 text-primary"></i> Registrar Nueva Recepción</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formComercial">
+                            <div class="mb-3">
+                                <label for="clienteNombre" class="form-label fw-semibold">Nombre del Cliente *</label>
+                                <input type="text" class="form-control" id="clienteNombre" placeholder="Ej. Juan Pérez / Empresa S.A." required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="clienteTelefono" class="form-label fw-semibold">Teléfono de Contacto</label>
+                                <input type="tel" class="form-control" id="clienteTelefono" placeholder="Ej. +58 412 1234567">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcionServicio" class="form-label fw-semibold">Descripción del Equipo / Servicio *</label>
+                                <textarea class="form-control" id="descripcionServicio" rows="2" placeholder="Detalles del equipo o servicio solicitado..." required></textarea>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="fechaEntrada" class="form-label fw-semibold">Fecha de Entrada *</label>
+                                    <input type="date" class="form-control" id="fechaEntrada" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="fechaSalida" class="form-label fw-semibold">Fecha de Salida (Límite) *</label>
+                                    <input type="date" class="form-control" id="fechaSalida" required>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-dark border-secondary text-center mb-4" id="cajaNumeroGenerado" style="display: none;">
+                                <span class="d-block small text-muted mb-1">N° de Recepción Asignado:</span>
+                                <strong class="fs-4 text-success" id="displayNumeroRecepcion"></strong>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 btn-lg shadow-sm">
+                                <i class="fa-solid fa-cloud-arrow-up me-2"></i> Guardar Nueva Recepción
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COLUMNA DERECHA: Monitor de Trabajos Activos & Alertas Inteligentes -->
+            <div class="col-lg-7">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 fw-bold"><i class="fa-solid fa-triangle-exclamation me-2 text-warning"></i> Monitoreo Activo & Alertas</h5>
+                        <span class="badge bg-secondary">Total: <span id="totalTrabajos">0</span></span>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive" style="max-height: 750px; overflow-y: auto;">
+                            <table class="table table-hover mb-0 align-middle">
+                                <thead class="table-dark sticky-top">
+                                    <tr>
+                                        <th>N° Recepción</th>
+                                        <th>Cliente / Servicio</th>
+                                        <th>Fechas (Ent. / Sal.)</th>
+                                        <th>Progreso</th>
+                                        <th class="text-center">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaTrabajosActivos">
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4 text-muted">Cargando registros de Firebase...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Firebase Compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="comerciales.js"></script>
+</body>
+</html>

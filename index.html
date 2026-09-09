@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renser Oriente C.A. - Sistema de Operaciones</title>
+    <link rel="icon" type="image/png" href="icono.png">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Pantalla de Carga Inicial -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <i class="fa-solid fa-circle-notch spinner"></i>
+        <p>Cargando portal...</p>
+    </div>
+
+    <!-- Contenedor Principal de la Portada -->
+    <main class="landing-container">
+
+        <!-- Elementos decorativos de fondo (rejilla industrial / brillo) -->
+        <div class="bg-glow"></div>
+
+        <div class="landing-card">
+            <!-- Logo Corporativo -->
+            <div class="brand-section">
+                <div class="logo-container">
+                    <img src="logo.jpg" alt="Renser Oriente C.A. Logo" class="corporate-logo" onerror="this.src='icono.png'">
+                </div>
+            </div>
+
+            <!-- Información de Bienvenida -->
+            <div class="welcome-section">
+                <span class="badge-system">
+                    <i class="fa-solid fa-shield-halved"></i> Sistema de Control Operativo
+                </span>
+                <h1>Departamento de Operaciones</h1>
+                <p>Plataforma integrada para la gestión de recepción, trazabilidad de equipos y hojas de ruta.</p>
+            </div>
+
+            <!-- Botón de Acceso al Sistema -->
+            <div class="action-section">
+                <button id="btnEntrar" class="btn-enter">
+                    <span>Entrar al Sistema</span>
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
+            </div>
+
+            <!-- Pie de página corporativo -->
+            <div class="landing-footer">
+                <p>&copy; 2026 Renser Oriente C.A. RIF: J-31259448-9. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script Principal -->
+    <script src="script.js"></script>
+</body>
+</html>
